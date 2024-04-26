@@ -7,7 +7,11 @@ It will be evaluated based on your source code and your report which you will wr
 Do not neglect the report, it will have a significant weight.
 Keep it short but complete:
 
-##### **&#x1F516;** **(&#x61;)** ___Provide block diagrams with a clear identification of the registers and of the combinatorial parts; name the registers, explain what the combinatorial parts do.___
+##### **&#x1F516;** **(&#x61;)** ___Provide block diagrams___
+
+- with a clear identification of the registers and of the combinatorial parts; 
+- name the registers, 
+- explain what the combinatorial parts do.
 
 Provide state diagrams and detailed explanations for your state machines.
 
