@@ -29,11 +29,11 @@ Keep it short but complete:
 
 - Comment your synthesis results (maximum clock frequency, resource usage...)
 
-##### **&#x1F516;** **(&#x64;)** ___Provide an overview of the performance of your cryptographic accelerator (e.g., in Mb/s).___
+##### **&#x1F516;** **(&#x65;)** ___Provide an overview of the performance of your cryptographic accelerator (e.g., in Mb/s).___
 
-##### **&#x1F516;** **(&#x64;)** ___Document the companion software components you developed (drivers, scripts, libraries...)___
+##### **&#x1F516;** **(&#x66;)** ___Document the companion software components you developed (drivers, scripts, libraries...)___
 
-##### **&#x1F516;** **(&#x64;)** ___Provide a user documentation showing how to use your cryptographic accelerator and its companion software components.___
+##### **&#x1F516;** **(&#x67;)** ___Provide a user documentation showing how to use your cryptographic accelerator and its companion software components.___
 
 ...
 
