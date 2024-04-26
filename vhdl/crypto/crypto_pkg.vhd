@@ -12,6 +12,33 @@ package crypto_pkg is
     end record;
     subtype w128 is std_logic_vector(127 downto to);
     type w128_array is array (natural range <>);
+    subtype zi is std_ulogic_vector(31 downto 0);
+    subtype zijie is std_ulogic_vector(7 downto 0);
+
+    type type_sbox is array (0 to 15) of array (0 to 15) of std_ulogic_vector(7 downto 0); --sbox substitution table
+
+    constant sbox_constant : type_sbox := 
+    (
+        (x"D6", x"90", x"E9", x"FE", x"CC", x"E1", x"3D", x"B7", x"16", x"B6", x"14", x"C2", x"28", x"FB", x"2C", x"05"),
+        (x"2B", x"67", x"9A", x"76", x"2A", x"BE", x"04", x"C3", x"AA", x"44", x"13", x"26", x"49", x"86", x"06", x"99"),
+        (x"9C", x"42", x"50", x"F4", x"91", x"EF", x"98", x"7A", x"33", x"54", x"0B", x"43", x"ED", x"CF", x"AC", x"62"),
+        (x"E4", x"B3", x"1C", x"A9", x"C9", x"08", x"E8", x"95", x"80", x"DF", x"94", x"FA", x"75", x"8F", x"3F", x"A6"),
+        (x"47", x"07", x"A7", x"FC", x"F3", x"73", x"17", x"BA", x"83", x"59", x"3C", x"19", x"E6", x"85", x"4F", x"A8"),
+        (x"68", x"6B", x"81", x"B2", x"71", x"64", x"DA", x"8B", x"F8", x"EB", x"0F", x"4B", x"70", x"56", x"9D", x"35"),
+        (x"1E", x"24", x"0E", x"5E", x"63", x"58", x"D1", x"A2", x"25", x"22", x"7C", x"3B", x"01", x"21", x"78", x"87"),
+        (x"D4", x"00", x"46", x"57", x"9F", x"D3", x"27", x"52", x"4C", x"36", x"02", x"E7", x"A0", x"C4", x"C8", x"9E"),
+        (x"EA", x"BF", x"8A", x"D2", x"40", x"C7", x"38", x"B5", x"A3", x"F7", x"F2", x"CE", x"F9", x"61", x"15", x"A1"),
+        (x"E0", x"AE", x"5D", x"A4", x"9B", x"34", x"1A", x"55", x"AD", x"93", x"32", x"30", x"F5", x"8C", x"B1", x"E3"),
+        (x"1D", x"F6", x"E2", x"2E", x"82", x"66", x"CA", x"60", x"C0", x"29", x"23", x"AB", x"0D", x"53", x"4E", x"6F"),
+        (x"D5", x"DB", x"37", x"45", x"DE", x"FD", x"8E", x"2F", x"03", x"FF", x"6A", x"72", x"6D", x"6C", x"5B", x"51"),
+        (x"8D", x"1B", x"AF", x"92", x"BB", x"DD", x"BC", x"7F", x"11", x"D9", x"5C", x"41", x"1F", x"10", x"5A", x"D8"),
+        (x"0A", x"C1", x"31", x"88", x"A5", x"CD", x"7B", x"BD", x"2D", x"74", x"D0", x"12", x"B8", x"E5", x"B4", x"B0"),
+        (x"89", x"69", x"97", x"4A", x"0C", x"96", x"77", x"7E", x"65", x"B9", x"F1", x"09", x"C5", x"6E", x"C6", x"84"),
+        (x"18", x"F0", x"7D", x"EC", x"3A", x"DC", x"4D", x"20", x"79", x"EE", x"5F", x"3E", x"D7", x"CB", x"39", x"48")
+    );
+
+    function Sbox(sbox_in: zijie) return zijie;
+
 
 end package crypto_pkg;
 
@@ -22,5 +49,10 @@ package body crypto_pkg is
     begin
         return tmp;
     end function round;
+
+    function Sbox(sbox_in: zijie) return zijie is
+    begin
+        return sbox_constant(to_integer(unsigned(sbox_in(7 downto 4))), to_integer(unsigned(sbox_in(3 downto 0))));
+    end function Sbox;
 
 end package body crypto_pkg;
