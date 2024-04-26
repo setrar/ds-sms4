@@ -17,6 +17,10 @@ end package crypto_pkg;
 
 package body crypto_pkg is
 
-
+    function round(___ )  return ___ is
+        writable tmp: w128;
+    begin
+        return tmp;
+    end function round;
 
 end package body crypto_pkg;
