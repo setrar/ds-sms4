@@ -35,8 +35,6 @@ Keep it short but complete:
 
 ##### **&#x1F516;** **(&#x67;)** ___Provide a user documentation showing how to use your cryptographic accelerator and its companion software components.___
 
-...
 
-the `final` branch is the only branch that will be considered.
 
 
