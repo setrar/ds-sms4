@@ -17,19 +17,24 @@ Keep it short but complete:
 
 - detailed explanations for your state machines.
 
-Explain what each VHDL source file contains and what its role is in the global picture.
+##### **&#x1F516;** **(&#x63;)** ___Explain what each VHDL source file contains___
 
-Detail and motivate your design choices (partitioning, scheduling of operations...)
+- and what its role is in the global picture.
 
-Explain how you validated each part.
+##### **&#x1F516;** **(&#x64;)** ___Detail and motivate your design choices___
 
-Comment your synthesis results (maximum clock frequency, resource usage...)
+- (partitioning, scheduling of operations...)
 
-Provide an overview of the performance of your cryptographic accelerator (e.g., in Mb/s).
+- Explain how you validated each part.
 
-Document the companion software components you developed (drivers, scripts, libraries...)
+- Comment your synthesis results (maximum clock frequency, resource usage...)
 
-Provide a user documentation showing how to use your cryptographic accelerator and its companion software components.
+##### **&#x1F516;** **(&#x64;)** ___Provide an overview of the performance of your cryptographic accelerator (e.g., in Mb/s).___
+
+##### **&#x1F516;** **(&#x64;)** ___Document the companion software components you developed (drivers, scripts, libraries...)___
+
+##### **&#x1F516;** **(&#x64;)** ___Provide a user documentation showing how to use your cryptographic accelerator and its companion software components.___
+
 ...
 
 the `final` branch is the only branch that will be considered.
