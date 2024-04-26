@@ -13,7 +13,9 @@ Keep it short but complete:
 - name the registers, 
 - explain what the combinatorial parts do.
 
-Provide state diagrams and detailed explanations for your state machines.
+##### **&#x1F516;** **(&#x62;)** ___Provide state diagrams___ 
+
+- detailed explanations for your state machines.
 
 Explain what each VHDL source file contains and what its role is in the global picture.
 
