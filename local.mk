@@ -1,4 +1,4 @@
 MODE := work
-SIM  := ghdl
+SIM  := vsim
 GUI  := yes
 V    := 1

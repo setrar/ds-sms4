@@ -2,20 +2,28 @@
 -- Crypto PKG
 --
 
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use ieee.numeric_std_unsigned.all;
+
 package crypto_pkg is
 
+    /*
     generic(type T);
 
     type foo_t is record
         a: std_logic_vector(5 downto 0);
         b: natural range 0 to 17;
     end record;
-    subtype w128 is std_logic_vector(127 downto to);
     type w128_array is array (natural range <>);
+    */
+
+    subtype w128 is std_ulogic_vector(127 downto 0);
     subtype zi is std_ulogic_vector(31 downto 0);
     subtype zijie is std_ulogic_vector(7 downto 0);
 
-    type type_sbox is array (0 to 15) of array (0 to 15) of std_ulogic_vector(7 downto 0); --sbox substitution table
+    type type_sbox is array (0 to 15, 0 to 15) of std_ulogic_vector(7 downto 0); --sbox substitution table
 
     constant sbox_constant : type_sbox := 
     (
@@ -37,22 +45,73 @@ package crypto_pkg is
         (x"18", x"F0", x"7D", x"EC", x"3A", x"DC", x"4D", x"20", x"79", x"EE", x"5F", x"3E", x"D7", x"CB", x"39", x"48")
     );
 
+    type type_FK is array (0 to 3) of std_ulogic_vector(31 downto 0); --FK constants LUT
+
+    constant FK_constant : type_FK := (
+        x"A3B1BAC6", x"56AA3350", x"677D9197", x"B27022DC"
+    );
+
+    type type_CK is array (0 to 31) of std_ulogic_vector(31 downto 0); --CK constants LUT
+
+    constant CK_constant : type_CK := (
+        x"00070E15", x"1C232A31", x"383F464D", x"545B6269",
+        x"70777E85", x"8C939AA1", x"A8AFB6BD", x"C4CBD2D9",
+        x"E0E7EEF5", x"FC030A11", x"181F262D", x"343B4249",
+        x"50575E65", x"6C737A81", x"888F969D", x"A4ABB2B9",
+        x"C0C7CED5", x"DCE3EAF1", x"F8FF060D", x"141B2229",
+        x"30373E45", x"4C535A61", x"686F767D", x"848B9299",
+        x"A0A7AEB5", x"BCC3CAD1", x"D8DFE6ED", x"F4FB0209",
+        x"10171E25", x"2C333A41", x"484F565D", x"646B7279"
+    );
+
     function Sbox(sbox_in: zijie) return zijie;
+    function Tau(A: zi) return zi;
+    function L(B: zi) return zi;
+    function LPrime(B: zi) return zi;
+    function F(F_in: w128; rk: zi) return w128;
+    --function compute_inittials_rki(MK: w128) return w128;
+    --function compute_next_rki(Ki: zi, Ki1: zi, Ki2: zi, Ki3: zi, i: natural range 0 to 31) return zi;
 
 
 end package crypto_pkg;
 
 package body crypto_pkg is
 
-    function round(___ )  return ___ is
-        writable tmp: w128;
-    begin
-        return tmp;
-    end function round;
-
     function Sbox(sbox_in: zijie) return zijie is
     begin
         return sbox_constant(to_integer(unsigned(sbox_in(7 downto 4))), to_integer(unsigned(sbox_in(3 downto 0))));
     end function Sbox;
+
+    function Tau(A: zi) return zi is
+        variable B: zi;
+    begin
+        B := Sbox(A(31 downto 24)) & Sbox(A(23 downto 16)) & Sbox(A(15 downto 8)) & Sbox(A(7 downto 0));
+        return B;
+    end function Tau;
+
+    function L(B: zi) return zi is
+        variable C: zi;
+    begin
+        C := B xor (B rol 2) xor (B rol 10) xor (B rol 18) xor (B rol 24);
+        return C;
+    end function L;
+
+    function LPrime(B: zi) return zi is
+        variable C: zi;
+    begin
+        C := B xor (B rol 13) xor (B rol 23);
+        return C;
+    end function LPrime;
+
+    function F(F_in: w128; rk: zi) return zi is
+        alias X0: zi is F_in(31 downto 0);
+        alias X1: zi is F_in(63 downto 32);
+        alias X2: zi is F_in(95 downto 64);
+        alias X3: zi is F_in(127 downto 96);
+    begin
+        return X0 xor L(Tau(X1 xor X2 xor X3 xor rk));
+    end function F;
+
+    
 
 end package body crypto_pkg;
