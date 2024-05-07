@@ -47,13 +47,13 @@ package crypto_pkg is
 
     type type_FK is array (0 to 3) of std_ulogic_vector(31 downto 0); --FK constants LUT
 
-    constant FK_constant : type_FK := (
+    constant FK : type_FK := (
         x"A3B1BAC6", x"56AA3350", x"677D9197", x"B27022DC"
     );
 
     type type_CK is array (0 to 31) of std_ulogic_vector(31 downto 0); --CK constants LUT
 
-    constant CK_constant : type_CK := (
+    constant CK : type_CK := (
         x"00070E15", x"1C232A31", x"383F464D", x"545B6269",
         x"70777E85", x"8C939AA1", x"A8AFB6BD", x"C4CBD2D9",
         x"E0E7EEF5", x"FC030A11", x"181F262D", x"343B4249",
@@ -69,8 +69,9 @@ package crypto_pkg is
     function L(B: zi) return zi;
     function LPrime(B: zi) return zi;
     function F(F_in: w128; rk: zi) return w128;
-    --function compute_inittials_rki(MK: w128) return w128;
-    --function compute_next_rki(Ki: zi, Ki1: zi, Ki2: zi, Ki3: zi, i: natural range 0 to 31) return zi;
+    function R(A: w128) return w128;
+    function compute_initials_rks(MK: w128) return w128;
+    function compute_next_rki(K: w128; i: integer range 0 to 31) return zi;
 
 
 end package crypto_pkg;
@@ -112,6 +113,31 @@ package body crypto_pkg is
         return X0 xor L(Tau(X1 xor X2 xor X3 xor rk));
     end function F;
 
-    
+    function R(A: w128) return w128 is
+        alias A0: zi is A(31 downto 0);
+        alias A1: zi is A(63 downto 32);
+        alias A2: zi is A(95 downto 64);
+        alias A3: zi is A(127 downto 96);
+    begin
+        return A0 & A1 & A2 & A3;
+    end function R;
+
+    function compute_initials_rks(MK: w128) return w128 is
+        alias MK0: zi is MK(31 downto 0);
+        alias MK1: zi is MK(63 downto 32);
+        alias MK2: zi is MK(95 downto 64);
+        alias MK3: zi is MK(127 downto 96);
+    begin
+        return (MK3 xor FK(3)) & (MK2 xor FK(2)) & (MK1 xor FK(1)) & (MK0 xor FK(0));
+    end function compute_initials_rks;
+
+    function compute_next_rki(K: w128; i: integer range 0 to 31) return zi is
+        alias Ki0: zi is K(31 downto 0);
+        alias Ki1: zi is K(63 downto 32);
+        alias Ki2: zi is K(95 downto 64);
+        alias Ki3: zi is K(127 downto 96);
+    begin
+        return Ki0 xor LPrime(Tau(Ki1 xor Ki2 xor Ki3 xor CK(i)));
+    end function compute_next_rki;
 
 end package body crypto_pkg;
