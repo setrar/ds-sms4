@@ -1,3 +1,13 @@
+# cipher
+
+### 1. Translated the Python sm4 implementation to VHDL using ChatGPT
+
+```
+https://raw.githubusercontent.com/0x10001/sm4/main/sm4/core.py
+```
+
+### 2. Implementation Result
+
 In VHDL, you can organize your code in a way that suits your project's structure and your specific needs. Typically, VHDL projects consist of multiple files divided into two main types:
 
 1. **Entity/Architecture Files**: These files describe the structure and behavior of the hardware components. An entity defines the interface (ports) of the component, and the architecture provides the implementation details.
