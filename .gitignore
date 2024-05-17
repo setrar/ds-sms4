@@ -9,3 +9,5 @@ webtalk.jou
 webtalk.log
 *.fig.bak
 .DS_Store
+
+.ipynb_checkpoints
