@@ -3,7 +3,7 @@
 - [ ] Source binaries
 
 ```
-. ~/Developer/ds/bin/source.sh
+. ~/Developer/ds-sms4/bin/source.sh
 ```
 
 ```
