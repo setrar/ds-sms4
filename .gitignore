@@ -9,5 +9,9 @@ webtalk.jou
 webtalk.log
 *.fig.bak
 .DS_Store
+<<<<<<< HEAD
 
 .ipynb_checkpoints
+=======
+.ipynb_checkpoints
+>>>>>>> 5e7aa8ff66b65ba846d7dd322d72727d11d66e2c
