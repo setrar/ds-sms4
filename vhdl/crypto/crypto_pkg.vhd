@@ -71,7 +71,7 @@ package crypto_pkg is
     function F(F_in: w128; rk: zi) return w128;
     function R(A: w128) return w128;
     function compute_initials_rks(MK: w128) return w128;
-    function compute_next_rki(K: w128; i: integer range 0 to 31) return zi;
+    function compute_next_rki(K: w128; i: integer range 0 to 31) return w128;
 
 
 end package crypto_pkg;
@@ -131,13 +131,15 @@ package body crypto_pkg is
         return (MK3 xor FK(3)) & (MK2 xor FK(2)) & (MK1 xor FK(1)) & (MK0 xor FK(0));
     end function compute_initials_rks;
 
-    function compute_next_rki(K: w128; i: integer range 0 to 31) return zi is
+    function compute_next_rki(K: w128; i: integer range 0 to 31) return w128 is
         alias Ki0: zi is K(31 downto 0);
         alias Ki1: zi is K(63 downto 32);
         alias Ki2: zi is K(95 downto 64);
         alias Ki3: zi is K(127 downto 96);
+        variable Ki4: zi;
     begin
-        return Ki0 xor LPrime(Tau(Ki1 xor Ki2 xor Ki3 xor CK(i)));
+        Ki4 := Ki0 xor LPrime(Tau(Ki1 xor Ki2 xor Ki3 xor CK(i)));
+        return Ki4 & Ki3 & Ki2 & Ki1;
     end function compute_next_rki;
 
 end package body crypto_pkg;
