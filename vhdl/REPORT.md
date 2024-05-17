@@ -16,7 +16,7 @@ ghdl -a --std=08 --work=common "$ds-sms4/vhdl/common/rnd_pkg.vhd"
 * Analyzing (can also use -a parameter)
 
 ```
-ghdl analyse --std=08 "$ds-sms4/vhdl/vhdl/crypto.vhd" "$ds-sms4/vhdl/lab03/crypto_sim.vhd"
+ghdl analyse --std=08 "$ds-sms4/vhdl/crypto/crypto.vhd" "$ds-sms4/vhdl/crypto/crypto_sim.vhd"
 ```
 
 * Running (can also use -r parameter)
