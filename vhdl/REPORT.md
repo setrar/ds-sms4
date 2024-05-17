@@ -8,8 +8,16 @@
 
 ```
 cd "$sim"
+```
+
+```
 ghdl -a --std=08 --work=common "$ds-sms4/vhdl/common/rnd_pkg.vhd"
 ```
+
+```
+ghdl -a --std=08 --work=axi_pkg "$ds-sms4/vhdl/common/axi_pkg.vhd"
+```
+
 
 - [ ] Synthesizing
 
