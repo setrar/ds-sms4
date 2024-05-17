@@ -8,7 +8,7 @@
 
 ```
 cd "$sim"
-ghdl -a --std=08 --work=common "$ds/vhdl/common/rnd_pkg.vhd"
+ghdl -a --std=08 --work=common "$ds-sms4/vhdl/common/rnd_pkg.vhd"
 ```
 
 - [ ] Synthesizing
@@ -16,20 +16,20 @@ ghdl -a --std=08 --work=common "$ds/vhdl/common/rnd_pkg.vhd"
 * Analyzing (can also use -a parameter)
 
 ```
-ghdl analyse --std=08 "$ds/vhdl/lab03/timer.vhd" "$ds/vhdl/lab03/timer_sim.vhd"
+ghdl analyse --std=08 "$ds-sms4/vhdl/vhdl/crypto.vhd" "$ds-sms4/vhdl/lab03/crypto_sim.vhd"
 ```
 
 * Running (can also use -r parameter)
 
 ```
-ghdl run --std=08 timer_sim --vcd=timer_sim.vcd
+ghdl run --std=08 crypto_sim --vcd=crypto_sim.vcd
 ```
 > simulation finished @2019ns
 
 - [ ] Visualizing
 
 ```
-gtkwave timer_sim.vcd
+gtkwave crypto_sim.vcd
 ```
 > Returns
 ```powershell
