@@ -21,11 +21,11 @@ cd "$sim"
 ```
 
 ```
-ghdl -a --std=08 --work=common "$ds-sms4/vhdl/common/rnd_pkg.vhd"
+ghdl -a --std=08 --work=common "$ds_sms4/vhdl/common/rnd_pkg.vhd"
 ```
 
 ```
-ghdl -a --std=08 --work=axi_pkg "$ds-sms4/vhdl/common/axi_pkg.vhd"
+ghdl -a --std=08 --work=axi_pkg "$ds_sms4/vhdl/common/axi_pkg.vhd"
 ```
 
 
@@ -34,7 +34,7 @@ ghdl -a --std=08 --work=axi_pkg "$ds-sms4/vhdl/common/axi_pkg.vhd"
 * Analyzing (can also use -a parameter)
 
 ```
-ghdl analyse --std=08 "$ds-sms4/vhdl/crypto/crypto.vhd" "$ds-sms4/vhdl/crypto/crypto_sim.vhd"
+ghdl analyse --std=08 "$ds_sms4/vhdl/crypto/crypto.vhd" "$ds_sms4/vhdl/crypto/crypto_sim.vhd"
 ```
 
 * Running (can also use -r parameter)
