@@ -38,3 +38,19 @@ GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
 
 
 These commands should compile, elaborate, and run your VHDL testbench, and optionally allow you to view the simulation waveforms. Make sure GHDL and GTKWave are installed on your system before running these commands. If they are not installed, you can find installation instructions on their respective websites.
+
+- [ ] Mismatch
+
+```
+ghdl analyse --std=08 \                                
+            $ds_sms4/vhdl/crypto/crypto_pkg.vhd \
+            $ds_sms4/vhdl/crypto/tb_F_function_mismatch.vhd 
+```
+
+```
+ghdl run --std=08 tb_F_function_mismatch --vcd=tb_F_function_mismatch.vcd
+```
+
+/Users/valiha/Developer/ds-sms4/vhdl/crypto/tb_F_function_mismatch.vhd:50:13:@30ns:(assertion failure): Mismatch in round 0
+ghdl:error: assertion failed
+ghdl:error: simulation failed
