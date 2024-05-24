@@ -26,5 +26,15 @@ To compile and run the VHDL testbench, you can use the GHDL tool, which is a pop
    ```sh
    gtkwave tb_F_function.vcd
    ```
+   >Returns:
+```powershell
+GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
+
+[0] start time.
+[40000000] end time.
+```
+
+<img src=images/tb_F_function_1.png width='' height='' > </img>
+
 
 These commands should compile, elaborate, and run your VHDL testbench, and optionally allow you to view the simulation waveforms. Make sure GHDL and GTKWave are installed on your system before running these commands. If they are not installed, you can find installation instructions on their respective websites.
