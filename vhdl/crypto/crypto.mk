@@ -11,6 +11,6 @@
 
 crypto: axi_pkg
 crypto_engine: crypto_pkg
-crypto_tests: crypto_pkg, crypto_engine
+crypto_tests: crypto_engine
 
 # vim: set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab textwidth=0:

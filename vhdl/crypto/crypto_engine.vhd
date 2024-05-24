@@ -17,8 +17,8 @@ entity crypto_engine is
 end entity crypto_engine;
 
 architecture rtl of crypto_engine is
-    variable i: integer range 0 to 31;
-    variable j: integer range 0 to 31;
+    signal i: integer range 0 to 31;
+    signal j: integer range 0 to 31;
     signal mux_key_en: std_ulogic; -- Key multiplexer input selection
     signal mux_key_out: w128; -- Key multiplexer output
     signal key_reg: w128; -- Key registry
@@ -27,7 +27,7 @@ architecture rtl of crypto_engine is
     signal data_reg: w128; -- Data registry
     signal w_en_data: std_ulogic; -- Data registry write-enable signal
 
-    type type_state is (Idle0, Enc_init, Enc_round, Enc_end, Dec_init, Dec_keygen, Dec_keyreset, Dec_round, Dec_end);
+    type type_state is (Idle0, Enc_init, Enc_round, Enc_end, Dec_init, Dec_keygen, Dec_round, Dec_end);
     signal CS, NS: type_state;
 begin
     -- Key expansion multiplexer
@@ -67,43 +67,43 @@ begin
         end if;
     end process seq0;
 
-    com0: process(CS, go, dec, i, j) -- Commutarial process
+    com0: process(CS, go, dec) -- Commutarial process
     begin
         w_en_data <= '0';
         mux_key_en <= '0';
         mux_data_en <= '0';
-        done <= '0'
+        done <= '0';
         case CS is
             when Idle0 =>
-                i := 0;
-                j := 31;
+                i <= 0;
+                j <= 31;
                 if go = '1' and dec = '0' then
                     NS <= Enc_init;
                     w_en_data <= '1';
                 elsif go = '1' and dec = '1' then
                     NS <= Dec_init;
-                    w_en_data <= '1'
+                    w_en_data <= '1';
                 else
                     NS <= Idle0;
                 end if;
 
             -- Encryption flow
             when Enc_init =>
-                NS <= Enc;
+                NS <= Enc_round;
                 mux_key_en <= '1';
                 mux_data_en <= '1';
                 w_en_data <= '1';
-                i := i + 1;
+                i <= i + 1;
             when Enc_round =>
                 if i = 31 then
                     NS <= Enc_end;
                     done <= '1';
                 else
-                    NS <= Enc;
+                    NS <= Enc_round;
                     mux_key_en <= '1';
                     mux_data_en <= '1';
                     w_en_data <= '1';
-                    i := i + 1;
+                    i <= i + 1;
                 end if;
             when Enc_end =>
                 NS <= Enc_end;
@@ -113,27 +113,28 @@ begin
             when Dec_init =>
                 NS <= Dec_keygen;
                 mux_key_en <= '1';
-                i := i + 1;
+                i <= i + 1;
             when Dec_keygen =>
                 if i = j then
                     NS <= Dec_round;
                     mux_data_en <= '1';
                     w_en_data <= '1';
-                    i := 0;
+                    i <= 0;
                 else
                     NS <= Dec_keygen;
                     mux_key_en <= '1';
-                    i := i + 1;
+                    i <= i + 1;
+                end if;
             when Dec_round =>
                 if j = 0 then
-                    NS <= Enc_end;
+                    NS <= Dec_end;
                     done <= '1';
                 else
-                    NS <= Enc_keygen;
-                    j := j - 1;
+                    NS <= Dec_keygen;
+                    j <= j - 1;
                 end if;
             when Dec_end =>
-                NS <= Enc_end;
+                NS <= Dec_end;
                 done <= '1';
         end case;
 
