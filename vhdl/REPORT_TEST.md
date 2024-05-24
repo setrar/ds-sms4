@@ -5,29 +5,32 @@ To compile and run the VHDL testbench, you can use the GHDL tool, which is a pop
 2. Compile the `crypto_pkg` package along with the testbench:
 
    ```sh
-   ghdl analyse --std=08 \                                
+ghdl analyse --std=08 \                                              
             $ds_sms4/vhdl/crypto/crypto_pkg.vhd \
-            $ds_sms4/vhdl/crypto/tb_F_function.vhd
-   ```
+            $ds_sms4/vhdl/crypto/tb_F_function_round1.vhd
+```
 
 5. Run the simulation:
    ```sh
-   ghdl run --std=08 tb_F_function --vcd=tb_F_function.vcd
+   ghdl run --std=08 tb_F_function_round1 --vcd=tb_F_function_round1.vcd
    ```
 > Returns:
 ```powershell
-~/Developer/ds-sms4/vhdl/crypto/tb_F_function.vhd:29:9:@20ns:(report note): Test Vector 1: F_out = 1373CCF60123456789ABCDEF01234567
-~/Developer/ds-sms4/vhdl/crypto/tb_F_function.vhd:39:9:@40ns:(report note): Test Vector 2: F_out = C8DECB89FEDCBA9876543210FEDCBA98
+~/Developer/ds-sms4/vhdl/crypto/tb_F_function_round1.vhd:34:9:@20ns:(report note): Test Vector 1: F_in = 0123456789ABCDEFFEDCBA9876543210
+~/Developer/ds-sms4/vhdl/crypto/tb_F_function_round1.vhd:35:9:@20ns:(report note): Test Vector 1: F_out = 89ABCDEFFEDCBA987654321027FAD345
+~/Developer/ds-sms4/vhdl/crypto/tb_F_function_round1.vhd:48:9:@40ns:(report note): Test Vector 2: F_in = 89ABCDEFFEDCBA987654321027FAD345
+~/Developer/ds-sms4/vhdl/crypto/tb_F_function_round1.vhd:49:9:@40ns:(report note): Test Vector 2: F_out = FEDCBA987654321027FAD345A18B4CB2
 ```
 
-   This command will also generate a VCD (Value Change Dump) file named `tb_F_function.vcd` which you can use to view the waveform in a waveform viewer like GTKWave.
+   This command will also generate a VCD (Value Change Dump) file named `tb_F_function_round1.vcd` which you can use to view the waveform in a waveform viewer like GTKWave.
 
 6. (Optional) View the waveform using GTKWave:
    ```sh
-   gtkwave tb_F_function.vcd
+   gtkwave tb_F_function_round1.vcd
    ```
    >Returns:
 ```powershell
+
 GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
 
 [0] start time.
