@@ -14,6 +14,11 @@ To compile and run the VHDL testbench, you can use the GHDL tool, which is a pop
    ```sh
    ghdl run --std=08 tb_F_function --vcd=tb_F_function.vcd
    ```
+> Returns:
+```powershell
+~/Developer/ds-sms4/vhdl/crypto/tb_F_function.vhd:29:9:@20ns:(report note): Test Vector 1: F_out = 1373CCF60123456789ABCDEF01234567
+~/Developer/ds-sms4/vhdl/crypto/tb_F_function.vhd:39:9:@40ns:(report note): Test Vector 2: F_out = C8DECB89FEDCBA9876543210FEDCBA98
+```
 
    This command will also generate a VCD (Value Change Dump) file named `tb_F_function.vcd` which you can use to view the waveform in a waveform viewer like GTKWave.
 
