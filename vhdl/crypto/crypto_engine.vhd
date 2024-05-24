@@ -17,14 +17,14 @@ entity crypto_engine is
 end entity crypto_engine;
 
 architecture rtl of crypto_engine is
-    signal i: integer range 0 to 31;
+    variable i: integer range 0 to 31;
     signal mux_key_en: std_ulogic;
     signal mux_key_out: w128;
     signal key_reg: w128;
     signal mux_data_en: std_ulogic;
     signal mux_data_out: w128;
     signal data_reg: w128;
-    signal w_en_key: std_ulogic;
+    signal reset_key: std_ulogic;
     signal w_en_data: std_ulogic;
 begin
     -- Key expansion multiplexer
@@ -40,7 +40,9 @@ begin
                 key_reg <= (others => '0');
                 data_reg <= (others => '0');
             else
-                if w_en_key = '1' then
+                if reset_key = '1' then
+                    key_reg <= (others => '0');
+                else
                     key_reg <= mux_key_out;
                 end if;
 
