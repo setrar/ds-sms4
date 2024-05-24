@@ -10,6 +10,7 @@
 # https://cecill.info/licences/Licence_CeCILL_V2.1-en.html
 
 crypto: axi_pkg
-test: crypto_pkg
+crypto_engine: crypto_pkg
+crypto_tests: crypto_pkg, crypto_engine
 
 # vim: set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab textwidth=0:
