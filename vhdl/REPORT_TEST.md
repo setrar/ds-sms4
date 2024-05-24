@@ -2,24 +2,17 @@ To compile and run the VHDL testbench, you can use the GHDL tool, which is a pop
 
 1. Open a terminal and navigate to the directory containing your VHDL files (`crypto_pkg.vhd` and `tb_F_function.vhd`).
 
-2. Compile the `crypto_pkg` package:
-   ```sh
-   ghdl -a crypto_pkg.vhd
-   ```
+2. Compile the `crypto_pkg` package along with the testbench:
 
-3. Compile the testbench:
    ```sh
-   ghdl -a tb_F_function.vhd
-   ```
-
-4. Elaborate the testbench:
-   ```sh
-   ghdl -e tb_F_function
+   ghdl analyse --std=08 \                                
+            $ds_sms4/vhdl/crypto/crypto_pkg.vhd \
+            $ds_sms4/vhdl/crypto/tb_F_function.vhd
    ```
 
 5. Run the simulation:
    ```sh
-   ghdl -r tb_F_function --vcd=tb_F_function.vcd
+   ghdl run --std=08 tb_F_function --vcd=tb_F_function.vcd
    ```
 
    This command will also generate a VCD (Value Change Dump) file named `tb_F_function.vcd` which you can use to view the waveform in a waveform viewer like GTKWave.
