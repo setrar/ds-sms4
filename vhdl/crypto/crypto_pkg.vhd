@@ -105,14 +105,14 @@ package body crypto_pkg is
     end function LPrime;
 
     function F(F_in: w128; rk: zi) return w128 is
-        alias X0: zi is F_in(31 downto 0);
-        alias X1: zi is F_in(63 downto 32);
-        alias X2: zi is F_in(95 downto 64);
-        alias X3: zi is F_in(127 downto 96);
+        alias X3: zi is F_in(31 downto 0);
+        alias X2: zi is F_in(63 downto 32);
+        alias X1: zi is F_in(95 downto 64);
+        alias X0: zi is F_in(127 downto 96);
         variable X4: zi;
     begin
         X4 := X0 xor L(Tau(X1 xor X2 xor X3 xor rk));
-        return X4 & X3 & X2 & X1;
+        return X1 & X2 & X3 & X4;
     end function F;
 
     function R(A: w128) return w128 is
