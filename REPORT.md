@@ -9,11 +9,16 @@ Keep it short but complete:
 
 ##### **&#x1F516;** **(&#x61;)** ___Provide block diagrams___
 
+
+<img src=images/ds-sm4_State-Machine.png width='' height='' > </img>
+
 - with a clear identification of the registers and of the combinatorial parts; 
 - name the registers, 
 - explain what the combinatorial parts do.
 
 ##### **&#x1F516;** **(&#x62;)** ___Provide state diagrams___ 
+
+<img src=images/ds-sm4_State-Diagram.png width='' height='' > </img>
 
 - detailed explanations for your state machines.
 

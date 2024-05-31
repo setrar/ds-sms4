@@ -4,8 +4,8 @@ To compile and run the VHDL testbench, you can use the GHDL tool, which is a pop
 
 2. Compile the `crypto_pkg` package along with the testbench:
 
-   ```sh
-   ghdl analyse --std=08 \                                              
+   ```
+   ghdl analyse --std=08 \
                $ds_sms4/vhdl/crypto/crypto_pkg.vhd \
                $ds_sms4/vhdl/crypto/tb_F_function_round1.vhd
    ```
@@ -37,23 +37,26 @@ GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
 [40000000] end time.
 ```
 
-<img src=images/tb_F_function_1.png width='' height='' > </img>
+<img src=images/tb_F_function_round1.png width='' height='' > </img>
 
 
 These commands should compile, elaborate, and run your VHDL testbench, and optionally allow you to view the simulation waveforms. Make sure GHDL and GTKWave are installed on your system before running these commands. If they are not installed, you can find installation instructions on their respective websites.
 
 - [ ] Mismatch
 
-```
-ghdl analyse --std=08 \                                
-            $ds_sms4/vhdl/crypto/crypto_pkg.vhd \
-            $ds_sms4/vhdl/crypto/tb_F_function_mismatch.vhd 
-```
+   ```
+   ghdl analyse --std=08 \
+               $ds_sms4/vhdl/crypto/crypto_pkg.vhd \
+               $ds_sms4/vhdl/crypto/tb_F_function_mismatch.vhd
+   ```
 
-```
-ghdl run --std=08 tb_F_function_mismatch --vcd=tb_F_function_mismatch.vcd
-```
-
-/Users/valiha/Developer/ds-sms4/vhdl/crypto/tb_F_function_mismatch.vhd:50:13:@30ns:(assertion failure): Mismatch in round 0
-ghdl:error: assertion failed
-ghdl:error: simulation failed
+   ```
+   ghdl run --std=08 tb_F_function_mismatch --vcd=tb_F_function_mismatch.vcd
+   ```
+   > 
+   ```powershell
+   /Users/valiha/Developer/ds-sms4/vhdl/crypto/tb_F_function_mismatch.vhd:50:13:@30ns:(report note): Test Vector : F_out = 89ABCDEF0123456789ABCDEF27FAD345
+   /Users/valiha/Developer/ds-sms4/vhdl/crypto/tb_F_function_mismatch.vhd:51:13:@30ns:(assertion failure): Mismatch in round 0
+   ghdl:error: assertion failed
+   ghdl:error: simulation failed
+   ```

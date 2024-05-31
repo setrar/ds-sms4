@@ -10,10 +10,16 @@ make crypto_pkg SIM=ghdl
 
 ---
 
+- [ ] Source Home
+
+```
+DS_HOME=~/Developer/ds-sms4
+```
+
 - [ ] Source binaries
 
 ```
-. ~/Developer/ds-sms4/bin/source.sh
+. $DS_HOME/bin/source.sh
 ```
 
 ```
