@@ -12,7 +12,9 @@ make crypto_pkg SIM=ghdl
 
 - [ ] Source Home
 
+```
 DS_HOME=~/Developer/ds-sms4
+```
 
 - [ ] Source binaries
 
