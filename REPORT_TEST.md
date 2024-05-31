@@ -16,10 +16,10 @@ To compile and run the VHDL testbench, you can use the GHDL tool, which is a pop
    ```
 > Returns:
 ```powershell
-~/Developer/ds-sms4/vhdl/crypto/tb_F_function_round1.vhd:34:9:@20ns:(report note): Test Vector 1: F_in = 0123456789ABCDEFFEDCBA9876543210
-~/Developer/ds-sms4/vhdl/crypto/tb_F_function_round1.vhd:35:9:@20ns:(report note): Test Vector 1: F_out = 89ABCDEFFEDCBA987654321027FAD345
-~/Developer/ds-sms4/vhdl/crypto/tb_F_function_round1.vhd:48:9:@40ns:(report note): Test Vector 2: F_in = 89ABCDEFFEDCBA987654321027FAD345
-~/Developer/ds-sms4/vhdl/crypto/tb_F_function_round1.vhd:49:9:@40ns:(report note): Test Vector 2: F_out = FEDCBA987654321027FAD345A18B4CB2
+.../vhdl/crypto/tb_F_function_round1.vhd:34:9:@20ns:(report note): Test Vector 1: F_in = 0123456789ABCDEFFEDCBA9876543210
+.../vhdl/crypto/tb_F_function_round1.vhd:35:9:@20ns:(report note): Test Vector 1: F_out = 89ABCDEFFEDCBA987654321027FAD345
+.../vhdl/crypto/tb_F_function_round1.vhd:48:9:@40ns:(report note): Test Vector 2: F_in = 89ABCDEFFEDCBA987654321027FAD345
+.../vhdl/crypto/tb_F_function_round1.vhd:49:9:@40ns:(report note): Test Vector 2: F_out = FEDCBA987654321027FAD345A18B4CB2
 ```
 
    This command will also generate a VCD (Value Change Dump) file named `tb_F_function_round1.vcd` which you can use to view the waveform in a waveform viewer like GTKWave.
@@ -55,8 +55,10 @@ These commands should compile, elaborate, and run your VHDL testbench, and optio
    ```
    > 
    ```powershell
-   /Users/valiha/Developer/ds-sms4/vhdl/crypto/tb_F_function_mismatch.vhd:50:13:@30ns:(report note): Test Vector : F_out = 89ABCDEF0123456789ABCDEF27FAD345
-   /Users/valiha/Developer/ds-sms4/vhdl/crypto/tb_F_function_mismatch.vhd:51:13:@30ns:(assertion failure): Mismatch in round 0
+   .../vhdl/crypto/tb_F_function_mismatch.vhd:50:13:@30ns:(report note): Test Vector : F_out = 89ABCDEF0123456789ABCDEF27FAD345
+   .../vhdl/crypto/tb_F_function_mismatch.vhd:51:13:@30ns:(assertion failure): Mismatch in round 0
    ghdl:error: assertion failed
    ghdl:error: simulation failed
    ```
+
+   :x: Not complete
