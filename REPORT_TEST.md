@@ -28,7 +28,7 @@ cd "$sim"
 ```
 ghdl analyse --std=08 \
             $ds_sms4/vhdl/crypto/crypto_pkg.vhd \
-            $ds_sms4/vhdl/crypto/tb_F_function.vhd
+            $ds_sms4/vhdl/ut/tb_F_function.vhd
 ```
 
 * Running (can also use -r parameter)
