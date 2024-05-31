@@ -47,7 +47,7 @@ begin
 
     key <= dout(255 downto 128);
     p <= dout(127 downto 0);
-    reg_in <= c when done else din;
+    reg_in <= c when done = '1' else din;
 
 
 

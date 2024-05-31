@@ -79,7 +79,7 @@ begin
         for i in 1 to 10 loop
             wait until rising_edge(clk);
         end loop;
-        
+
         -- Reset crypto engine
         sresetn <= '0';
         go <= '0';
