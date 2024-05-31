@@ -38,3 +38,23 @@ make crypto_bench SIM=ghdl
 
 # References
 
+- [ ] Compile
+
+```
+make crypto_bench
+```
+
+- [ ] Using ModelSim
+
+Make sure `ModelSim` is on your path
+
+```
+export PATH=$PATH:/packages/LabSoC/Mentor/Modelsim/bin
+```
+
+- [ ] Run the simulation
+
+```
+make crypto_bench.sim
+```
+
