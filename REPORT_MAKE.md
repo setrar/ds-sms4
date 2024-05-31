@@ -63,6 +63,7 @@ GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
 [40000000] end time.
 ```
 
+<img src=images/tb_F_function_1.png width='' height='' > </img>
 
 
 # References
