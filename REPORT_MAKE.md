@@ -48,8 +48,8 @@ ghdl analyse --std=08 \
     ```
 > Returns
 ```powershell
-/Users/valiha/Developer/ds-sms4/vhdl/crypto/tb_F_function.vhd:29:9:@20ns:(report note): Test Vector 1: F_out = 89ABCDEF0123456789ABCDEF5659CAC8
-/Users/valiha/Developer/ds-sms4/vhdl/crypto/tb_F_function.vhd:39:9:@40ns:(report note): Test Vector 2: F_out = 76543210FEDCBA98765432102FD7A94F
+.../vhdl/crypto/tb_F_function.vhd:29:9:@20ns:(report note): Test Vector 1: F_out = 89ABCDEF0123456789ABCDEF5659CAC8
+.../vhdl/crypto/tb_F_function.vhd:39:9:@40ns:(report note): Test Vector 2: F_out = 76543210FEDCBA98765432102FD7A94F
 ```
 
 ```
