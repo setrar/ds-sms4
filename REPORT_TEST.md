@@ -44,16 +44,19 @@ These commands should compile, elaborate, and run your VHDL testbench, and optio
 
 - [ ] Mismatch
 
-```
-ghdl analyse --std=08 \                                
-            $ds_sms4/vhdl/crypto/crypto_pkg.vhd \
-            $ds_sms4/vhdl/crypto/tb_F_function_mismatch.vhd 
-```
+   ```
+   ghdl analyse --std=08 \
+               $ds_sms4/vhdl/crypto/crypto_pkg.vhd \
+               $ds_sms4/vhdl/crypto/tb_F_function_mismatch.vhd
+   ```
 
-```
-ghdl run --std=08 tb_F_function_mismatch --vcd=tb_F_function_mismatch.vcd
-```
-
-/Users/valiha/Developer/ds-sms4/vhdl/crypto/tb_F_function_mismatch.vhd:50:13:@30ns:(assertion failure): Mismatch in round 0
-ghdl:error: assertion failed
-ghdl:error: simulation failed
+   ```
+   ghdl run --std=08 tb_F_function_mismatch --vcd=tb_F_function_mismatch.vcd
+   ```
+   > 
+   ```powershell
+   /Users/valiha/Developer/ds-sms4/vhdl/crypto/tb_F_function_mismatch.vhd:50:13:@30ns:(report note): Test Vector : F_out = 89ABCDEF0123456789ABCDEF27FAD345
+   /Users/valiha/Developer/ds-sms4/vhdl/crypto/tb_F_function_mismatch.vhd:51:13:@30ns:(assertion failure): Mismatch in round 0
+   ghdl:error: assertion failed
+   ghdl:error: simulation failed
+   ```
