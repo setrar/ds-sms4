@@ -18,7 +18,7 @@ Keep it short but complete:
 
 ##### **&#x1F516;** **(&#x62;)** ___Provide state diagrams___ 
 
-<img src=images/dm-sm4_State-Diagram.png width='' height='' > </img>
+<img src=images/ds-sm4_State-Diagram.png width='' height='' > </img>
 
 - detailed explanations for your state machines.
 
