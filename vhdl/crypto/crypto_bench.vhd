@@ -1,13 +1,13 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.crypto_tests.all;
+use work.crypto_pkg.all;
 
 entity crypto_bench is
     generic(
         plaintext: w128 := x"0123456789ABCDEFFEDCBA9876543210";
         key: w128 := x"0123456789ABCDEFFEDCBA9876543210";
-        ciphertext := x"681EDF34D206965E86B3E94F536E4246";
+        ciphertext: w128 := x"681EDF34D206965E86B3E94F536E4246"
     );
 end entity crypto_bench;
 
@@ -111,5 +111,7 @@ begin
         for i in 1 to 10 loop
             wait until rising_edge(clk);
         end loop;
+
+    end process;
 
 end architecture bench;

@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 
 use work.crypto_pkg.all;
 
-entity crypto_test is
+entity crypto_tests is
     port (
         clk: in std_ulogic; -- Clock signal input
         sresetn: in std_ulogic; -- Reset signal input
@@ -14,9 +14,9 @@ entity crypto_test is
         done: out std_ulogic;
         dout: out std_ulogic_vector(255 downto 0)
     );
-end entity crypto_test;
+end entity crypto_tests;
 
-architecture rtl of crypto_test is
+architecture rtl of crypto_tests is
     signal key: w128;
     signal p: w128;
     signal c: w128;
