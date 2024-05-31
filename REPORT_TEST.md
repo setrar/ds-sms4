@@ -10,6 +10,12 @@ To compile and run the VHDL testbench, you can use the GHDL tool, which is a pop
                $ds_sms4/vhdl/crypto/tb_F_function_round1.vhd
    ```
 
+   ```
+      ghdl analyse --std=08 \
+               $ds_sms4/vhdl/crypto/crypto_pkg.vhd \
+               $ds_sms4/vhdl/crypto/tb_F_function_round1.vhd
+   ```
+
 5. Run the simulation:
    ```sh
    ghdl run --std=08 tb_F_function_round1 --vcd=tb_F_function_round1.vcd
