@@ -38,6 +38,9 @@ Keep it short but complete:
 
 ##### **&#x1F516;** **(&#x66;)** ___Document the companion software components you developed (drivers, scripts, libraries...)___
 
+<img src=images/crypto_in_environment-fig-edited.png width='' height='' > </img>
+
+
 ##### **&#x1F516;** **(&#x67;)** ___Provide a user documentation showing how to use your cryptographic accelerator and its companion software components.___
 
 
